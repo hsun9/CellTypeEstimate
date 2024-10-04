@@ -64,8 +64,8 @@ Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_
 
 ### Marker set version
 ```
-v3 (default): The markers matched with preprint version of bioRxiv on Aug 15, 2024.
-v3.1: developing version
+v3 (default): These markers match the August 15, 2024 bioRxiv preprint
+v3.1: Developing version
 ```
 
 
