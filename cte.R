@@ -16,8 +16,8 @@ invisible(lapply(r_source, source))
 
 db_path <- paste0(path, '/db/')
 
-
-db <- 'v3.hsFB'
+ver <- 'v3'
+db <- 'hsFB'
 tissue <- 'Brain'
 
 umap <- 'umap'
@@ -28,6 +28,7 @@ GetoptLong(
     "rds=s",         "rds file path",
     "umap=s",        "seq type",
     "assay=s",       "obj type",
+    "ver=s",         "marker version",
     "db=s",          "marker db",
     "tissue=s",      "tissue name",
     "save",          "save to rds",
@@ -45,7 +46,7 @@ seurat_obj <- readRDS(rds)
 
 
 # set db
-f_db <- paste0(db_path, '/', db, '.xlsx')
+f_db <- paste0(db_path, '/', ver, '/' db, '.xlsx')
 if (!file.exists(f_db)){
     print('[ERROR] The db file does not exists!')
     print(f_db)
