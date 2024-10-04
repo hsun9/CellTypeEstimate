@@ -20,13 +20,11 @@ ver <- 'v3'
 db <- 'hsFB'
 tissue <- 'Brain'
 
-umap <- 'umap'
 assay <- 'SCT'
 outdir <- 'out_celltype'
 
 GetoptLong(
     "rds=s",         "rds file path",
-    "umap=s",        "seq type",
     "assay=s",       "obj type",
     "ver=s",         "marker version",
     "db=s",          "marker db",
