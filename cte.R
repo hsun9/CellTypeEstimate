@@ -14,7 +14,7 @@ fpath <- paste0(path, '/src/')
 r_source <- list.files(fpath, recursive = T, full.names = T, pattern = ".R")
 invisible(lapply(r_source, source))
 
-db_path <- paste0(path, '/db/')
+db_path <- paste0(path, '/db')
 
 ver <- 'v3'
 db <- 'hsFB'
