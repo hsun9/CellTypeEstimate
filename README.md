@@ -2,10 +2,13 @@
 
 CellTypeEstimate (CTE)
 =======================
+```
 Cell type annotation tool for single cell data
 
 Developer: Hua Sun
 
+Version: v1.0
+```
 
 Description
 ----------------------
@@ -67,3 +70,6 @@ Alisha Kardian, Hua Sun, et al., bioRxiv 2024. Dominant Malignant Clones Leverag
 Contact
 ----------------------
 Hua Sun, <hua.sun@stjude.org> | <hua.sun229@gmail.com> 
+
+
+
