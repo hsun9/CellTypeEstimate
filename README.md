@@ -49,17 +49,17 @@ Rscript cte.R --rds scrna.rds --db hsFB --umap umap --assay SCT --outdir out_cel
 
 ### Parameter
 ```
---tissue    Brain (default)
---ver       v3 (default); v3.1
---db        hsFB  (Human Forebrain)
+--tissue    Brain (default)              
+--ver       v3 (default); v3.1        # version of cell type marker set
+--db        hsFB  (Human Forebrain)      
             hsHD  (Human Hindbrain)
             mmFB  (Mouse Forebrain)
 
---rds       scrna.rds
---assay     SCT (default)
---umap      umap (default)
---save      save annotated rds
---outdir    out_celltype (default)
+--rds       seurat.rds                # seurat object file (.rds)
+--assay     SCT (default)             # Seurat assay type. RNA/SCT
+--umap      umap (default)            # The name of the umap to annotate
+--save                                # save annotated rds or not
+--outdir    out_celltype (default)    # output directory
 ```
 
 ### Marker set version
