@@ -35,14 +35,14 @@ Usage
 ----------------------
 * Test
 ```
-Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_celltype
+Rscript cte.R --rds scrna.rds --db hsFB --umap umap --assay SCT --outdir out_celltype
 ```
 > output: cluster_cellType.xls, metaData.cellType.xls
 
 
 * Save cell type to seurat object
 ```
-Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_celltype --save
+Rscript cte.R --rds scrna.rds --db hsFB --umap umap --assay SCT --outdir out_celltype --save
 ```
 > output: cluster_cellType.xls, metaData.cellType.xls, sc_celltype_anno.rds
 
