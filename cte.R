@@ -41,9 +41,6 @@ GetoptLong(
 
 dir.create(outdir)
 
-print('[INFO] Reading .rds data ...')
-seurat_obj <- readRDS(rds)
-
 
 # set db
 f_db <- paste0(db_path, '/', ver, '/', db, '.xlsx')
@@ -52,6 +49,9 @@ if (!file.exists(f_db)){
     print(f_db)
     quit()
 }
+
+print('[INFO] Reading .rds data ...')
+seurat_obj <- readRDS(rds)
 
 
 print('[INFO] Calculate scale data ...')
