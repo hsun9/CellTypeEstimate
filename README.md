@@ -1,3 +1,5 @@
+
+
 # CellTypeEstimate (CTE)
 Cell type annotation tool for single cell data
 
@@ -5,7 +7,7 @@ Developer: Hua Sun
 
 
 
-### Description
+## Description
 
 The CellTypeEstimate (CTE) is a cell type annotation tool developed based on ScType (Ianevski et al., Nat Commun 2022). It was built for 10xMultiome project and specifically solve brain tissue annotation. Its characteristics are simplicity, convenience, ease of use and strong scalability. It is suitable for directly using Seurat4/5 objects for cell type annotation of scRNA/snRNA/10xMultiome data. Currently contains a limited set of brain markers. It will continue to be upgraded as needed in the future.
 
@@ -44,8 +46,8 @@ Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_
 ```
 --tissue    Brain (default)
 --db        v3.hsFB  (Human Forebrain)
-			v3.hsHD  (Human Hindbrain)
-			v3.mmFB  (Mouse Forebrain)
+            v3.hsHD  (Human Hindbrain)
+            v3.mmFB  (Mouse Forebrain)
 
 --rds       scrna.rds
 --assay     SCT (default)
