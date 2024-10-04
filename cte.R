@@ -46,7 +46,7 @@ seurat_obj <- readRDS(rds)
 
 
 # set db
-f_db <- paste0(db_path, '/', ver, '/' db, '.xlsx')
+f_db <- paste0(db_path, '/', ver, '/', db, '.xlsx')
 if (!file.exists(f_db)){
     print('[ERROR] The db file does not exists!')
     print(f_db)
