@@ -1,5 +1,3 @@
-
-
 # CellTypeEstimate (CTE)
 Cell type annotation tool for single cell data
 
@@ -26,16 +24,18 @@ readxl
 
 ### Usage
 
-> Test
-`Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_celltype`
+[ Test ]
+```
+Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_celltype
+```
+> output: cluster_cellType.xls, metaData.cellType.xls
 
-output: cluster_cellType.xls, metaData.cellType.xls
 
-
-> Save cell type to seurat object
-`Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_celltype --save`
-
-output: cluster_cellType.xls, metaData.cellType.xls, sc_celltype_anno.rds
+[ Save cell type to seurat object ]
+```
+Rscript cte.R --rds scrna.rds --db v3.hsFB --umap umap --assay SCT --outdir out_celltype --save
+```
+> output: cluster_cellType.xls, metaData.cellType.xls, sc_celltype_anno.rds
 
 
 
@@ -57,11 +57,11 @@ output: cluster_cellType.xls, metaData.cellType.xls, sc_celltype_anno.rds
 
 ### Cite
 
-If you used this tool or cell type marker set in your study, please cite `https://github.com/hsun9/CellTypeEstimate`
+If you used this tool or cell type marker set in your study, please cite `github.com/hsun9/CellTypeEstimate`
 
 
 
-### The first manuscript using this tool
+## The first manuscript using this tool
 
 Alisha Kardian, Hua Sun, et al., bioRxiv 2024. Dominant Malignant Clones Leverage Lineage Restricted Epigenomic Programs to Drive Ependymoma Development.
 
