@@ -14,7 +14,8 @@ Description
 ----------------------
 The CellTypeEstimate (CTE) is a cell type annotation tool developed based on ScType (Ianevski et al., Nat Commun 2022). It was built for 10xMultiome project and specifically solve brain tissue annotation. Its characteristics are simplicity, convenience, ease of use and strong scalability. It is suitable for directly using Seurat4/5 objects for cell type annotation of scRNA/snRNA/10xMultiome data. Currently contains a limited set of brain markers. It will continue to be upgraded as needed in the future.
 
-* Note
+* [ Notice ]
+
     Most cell type markers were collected from normally developing brains, with a few marker sets coming from ependymomas (tumors). If a marker was collected from tumor data, it will be labeled "similar" and annotated in the "Region" column as coming from that tumor type. This is because these marker sets were created for analysis of healthy brains and ependymoma brain tumors.
 
 
