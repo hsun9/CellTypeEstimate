@@ -35,14 +35,14 @@ Usage
 ----------------------
 * Test
 ```
-Rscript cte.R --rds scrna.rds --db hsFB --umap umap --assay SCT --outdir out_celltype
+Rscript cte.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype
 ```
 > output: cluster_cellType.xls, metaData.cellType.xls
 
 
 * Save cell type to seurat object
 ```
-Rscript cte.R --rds scrna.rds --db hsFB --umap umap --assay SCT --outdir out_celltype --save
+Rscript cte.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --save
 ```
 > output: cluster_cellType.xls, metaData.cellType.xls, sc_celltype_anno.rds
 
@@ -57,7 +57,6 @@ Rscript cte.R --rds scrna.rds --db hsFB --umap umap --assay SCT --outdir out_cel
 
 --rds       seurat.rds                # seurat object file (.rds)
 --assay     SCT (default)             # Seurat assay type. RNA/SCT
---umap      umap (default)            # The name of the umap to annotate
 --save                                # save annotated rds or not
 --outdir    out_celltype (default)    # output directory
 ```
