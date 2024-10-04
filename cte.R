@@ -59,10 +59,12 @@ DefaultAssay(seurat_obj) <- assay
 print('[INFO] Annotating cell type ...')
 seurat_obj <- ScTypeAnnotation(seurat_obj, assay, f_db, tissue, outdir)
 
-# write table
+# write metadata
 metadata <- as.data.frame(seurat_obj@meta.data)
+write.table(metadata, file = paste0(outdir, "/metaData.cellType.xls"), sep="\t", quote=F, col.names = NA)
 
 
+# create cluster_cellType file
 record_anno <- unique(metadata[,c('seurat_clusters', 'cell_type', 'cell_type2', 'sctype.score')])
 if ('cluster_plus' %in% colnames(metadata)){
     record_anno <- unique(metadata[,c('seurat_clusters', 'cell_type', 'cell_type2', 'cluster_plus', 'sctype.score')])
