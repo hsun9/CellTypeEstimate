@@ -1,0 +1,82 @@
+# Hua Sun
+# cell type - streamline version
+# v1.0
+
+
+library(Seurat)
+library(dplyr)
+library(this.path)
+library(GetoptLong)
+
+
+path <- dirname(this.path())
+fpath <- paste0(path, '/src/')
+r_source <- list.files(fpath, recursive = T, full.names = T, pattern = ".R")
+invisible(lapply(r_source, source))
+
+db_path <- paste0(path, '/db/')
+
+
+db <- 'v3.hsFB'
+tissue <- 'Brain'
+
+umap <- 'umap'
+assay <- 'SCT'
+outdir <- 'out_celltype'
+
+GetoptLong(
+    "rds=s",         "rds file path",
+    "umap=s",        "seq type",
+    "assay=s",       "obj type",
+    "db=s",          "marker db",
+    "tissue=s",      "tissue name",
+    "save",          "save to rds",
+    "outdir=s",      "output path"
+)
+
+
+
+
+
+dir.create(outdir)
+
+print('[INFO] Reading .rds data ...')
+seurat_obj <- readRDS(rds)
+
+
+# set db
+f_db <- paste0(db_path, '/', db, '.xlsx')
+if (!file.exists(f_db)){
+    print('[ERROR] The db file does not exists!')
+    print(f_db)
+    quit()
+}
+
+
+print('[INFO] Calculate scale data ...')
+DefaultAssay(seurat_obj) <- assay
+
+print('[INFO] Annotating cell type ...')
+seurat_obj <- ScTypeAnnotation(seurat_obj, assay, f_db, tissue, outdir)
+
+# write table
+metadata <- as.data.frame(seurat_obj@meta.data)
+
+
+record_anno <- unique(metadata[,c('seurat_clusters', 'cell_type', 'cell_type2', 'sctype.score')])
+if ('cluster_plus' %in% colnames(metadata)){
+    record_anno <- unique(metadata[,c('seurat_clusters', 'cell_type', 'cell_type2', 'cluster_plus', 'sctype.score')])
+}
+record_anno <- record_anno[order(record_anno$sctype.score, decreasing=TRUE),]
+write.table(record_anno, file = paste0(outdir, "/cluster_cellType.xls"), sep="\t", quote=F, row.names = F)
+
+
+# save rds
+if (save){
+    print('[INFO] Saving data ...')
+    saveRDS(seurat_obj, file = paste0(outdir, '/sc_celltype_anno.rds'))
+}
+
+
+
+
