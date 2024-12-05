@@ -12,7 +12,7 @@ Version: v1.0
 
 Description
 ----------------------
-The CellTypeEstimate (CTE) is a cell type annotation tool developed based on ScType (Ianevski et al., Nat Commun 2022). It was built for 10xMultiome project and specifically solve brain tissue annotation. Its characteristics are simplicity, convenience, ease of use and strong scalability. It is suitable for directly using Seurat4/5 objects for cell type annotation of scRNA/snRNA/10xMultiome data. Currently contains a limited set of brain markers. It will continue to be upgraded as needed in the future.
+The CellTypeEstimate (CTE) is a cell type annotation tool developed based on ScType (Ianevski et al., Nat Commun 2022). It was built for 10xMultiome project and specifically solve brain tissue annotation. Its characteristics are simplicity, convenience, ease of use and strong scalability. It is suitable for directly using Seurat4/5 objects for cell type annotation of scRNA/snRNA/snMultiome data. Currently contains a limited set of brain markers. It will continue to be upgraded as needed in the future.
 
 * [ Notice ]
 
@@ -50,10 +50,12 @@ Rscript cte.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --save
 ### Parameter
 ```
 --tissue    Brain (default)              
---ver       v3 (default); v3.1        # version of cell type marker set
+--ver       v3 (default)              # version of cell type marker set
 --db        hsFB  (Human Forebrain)      
             hsHD  (Human Hindbrain)
             mmFB  (Mouse Forebrain)
+            hsFB.T  (Human Forebrain)  # include markers from tumor  
+            hsHD.T  (Human Hindbrain)  # include markers from tumor 
 
 --rds       seurat.rds                # seurat object file (.rds)
 --assay     SCT (default)             # Seurat assay type. RNA/SCT
@@ -64,7 +66,6 @@ Rscript cte.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --save
 ### Marker set version
 ```
 v3 (default): These markers match the August 15, 2024 bioRxiv preprint
-v3.1: Developing version
 ```
 
 
@@ -80,7 +81,7 @@ Alisha Kardian, Hua Sun, et al., bioRxiv 2024. Dominant Malignant Clones Leverag
 
 Contact
 ----------------------
-Hua Sun, <hua.sun@stjude.org> ; Stephen Mack (PI), <stephen.mack@stjude.org> 
+Hua Sun, <hua.sun@stjude.org> | <hua.sun229@gmail.com> ; Stephen Mack (PI), <stephen.mack@stjude.org> 
 
 
 
