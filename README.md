@@ -1,3 +1,6 @@
+
+
+
 CellTypeEstimate (CTE)
 =======================
 ```
@@ -49,11 +52,11 @@ Rscript cte.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --save
 ```
 --tissue    Brain (default)              
 --ver       v3 (default)               # version of cell type marker set
---db        hsFB  (Human Forebrain)    # normal annotation
-            hsHD  (Human Hindbrain)    # normal annotation
-            mmFB  (Mouse Forebrain)    # normal/tumor annotation
-            hsFB.T  (Human Forebrain)  # tumor annotation (includes markers collected from tumor data)
-            hsHD.T  (Human Hindbrain)  # tumor annotation (includes markers collected from tumor data)
+--db        hsFB  (Human Forebrain)    # normal data annotation
+            hsHD  (Human Hindbrain)    # normal data annotation
+            mmFB  (Mouse Forebrain)    # normal/tumor data annotation
+            hsFB.T  (Human Forebrain)  # tumor data annotation (includes markers collected from tumor data)
+            hsHD.T  (Human Hindbrain)  # tumor data annotation (includes markers collected from tumor data)
 
 --rds       seurat.rds                 # seurat object file (.rds)
 --assay     SCT (default)              # Seurat assay type. RNA/SCT
@@ -80,6 +83,7 @@ Alisha Kardian, Hua Sun, et al., bioRxiv 2024. Dominant Malignant Clones Leverag
 Contact
 ----------------------
 Hua Sun, <hua.sun@stjude.org> | <hua.sun229@gmail.com> ; Stephen Mack (PI), <stephen.mack@stjude.org> 
+
 
 
 
