@@ -1,5 +1,3 @@
-
-
 CellTypeEstimate (CTE)
 =======================
 ```
@@ -50,17 +48,17 @@ Rscript cte.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --save
 ### Parameter
 ```
 --tissue    Brain (default)              
---ver       v3 (default)              # version of cell type marker set
---db        hsFB  (Human Forebrain)      
-            hsHD  (Human Hindbrain)
-            mmFB  (Mouse Forebrain)
-            hsFB.T  (Human Forebrain)  # includes markers collected from tumor data
-            hsHD.T  (Human Hindbrain)  # includes markers collected from tumor data
+--ver       v3 (default)               # version of cell type marker set
+--db        hsFB  (Human Forebrain)    # normal annotation
+            hsHD  (Human Hindbrain)    # normal annotation
+            mmFB  (Mouse Forebrain)    # normal/tumor annotation
+            hsFB.T  (Human Forebrain)  # tumor annotation (includes markers collected from tumor data)
+            hsHD.T  (Human Hindbrain)  # tumor annotation (includes markers collected from tumor data)
 
---rds       seurat.rds                # seurat object file (.rds)
---assay     SCT (default)             # Seurat assay type. RNA/SCT
---save                                # save annotated rds or not
---outdir    out_celltype (default)    # output directory
+--rds       seurat.rds                 # seurat object file (.rds)
+--assay     SCT (default)              # Seurat assay type. RNA/SCT
+--save                                 # save annotated rds or not
+--outdir    out_celltype (default)     # output directory
 ```
 
 ### Marker set version
