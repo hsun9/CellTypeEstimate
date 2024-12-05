@@ -54,8 +54,8 @@ Rscript cte.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --save
 --db        hsFB  (Human Forebrain)      
             hsHD  (Human Hindbrain)
             mmFB  (Mouse Forebrain)
-            hsFB.T  (Human Forebrain)  # include markers from tumor  
-            hsHD.T  (Human Hindbrain)  # include markers from tumor 
+            hsFB.T  (Human Forebrain)  # includes markers collected from tumor data
+            hsHD.T  (Human Hindbrain)  # includes markers collected from tumor data
 
 --rds       seurat.rds                # seurat object file (.rds)
 --assay     SCT (default)             # Seurat assay type. RNA/SCT
