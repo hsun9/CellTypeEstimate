@@ -20,11 +20,13 @@ ver <- 'v3'
 db <- 'hsFB'
 tissue <- 'Brain'
 
+clusters <- 'seurat_clusters'
 assay <- 'SCT'
 outdir <- 'out_celltype'
 
 GetoptLong(
     "rds=s",         "rds file path",
+    "clusters=s",     "cluster",
     "assay=s",       "obj type",
     "ver=s",         "marker version",
     "db=s",          "marker db",
@@ -42,6 +44,7 @@ dir.create(outdir)
 
 # set db
 f_db <- paste0(db_path, '/', ver, '/', db, '.xlsx')
+print(paste0('[INFO] Read DB version: ', ver))
 if (!file.exists(f_db)){
     print('[ERROR] The db file does not exists!')
     print(f_db)
@@ -56,7 +59,7 @@ print('[INFO] Calculate scale data ...')
 DefaultAssay(seurat_obj) <- assay
 
 print('[INFO] Annotating cell type ...')
-seurat_obj <- ScTypeAnnotation(seurat_obj, assay, f_db, tissue, outdir)
+seurat_obj <- ScTypeAnnotation(seurat_obj, assay, clusters, f_db, tissue, outdir)
 
 # write metadata
 metadata <- as.data.frame(seurat_obj@meta.data)
