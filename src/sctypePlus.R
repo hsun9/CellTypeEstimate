@@ -121,7 +121,7 @@ sctype_score <- function(scRNAseqData, scaled = !0, gs, gs2 = NULL, gene_names_t
 
 
 ## CellType Anno SCType
-ScTypeAnnotation <- function(obj, assay, f_marker_db, tissue, out_path)
+ScTypeAnnotation <- function(obj, assay, clusters, f_marker_db, tissue, out_path)
 {
     ##-- 1. Loding DB
     # load libraries
@@ -155,9 +155,22 @@ ScTypeAnnotation <- function(obj, assay, f_marker_db, tissue, out_path)
     #es.max = sctype_score(scRNAseqData = count.data, scaled = FALSE, gs = gs_list$gs_positive, gs2 = gs_list$gs_negative)
 
     # merge by cluster
-    cL_resutls = do.call("rbind", lapply(unique(obj@meta.data$seurat_clusters), function(cl){
-        es.max.cl = sort(rowSums(es.max[ ,rownames(obj@meta.data[obj@meta.data$seurat_clusters==cl, ])]), decreasing = !0)
-        head(data.frame(cluster = cl, type = names(es.max.cl), scores = es.max.cl, ncells = sum(obj@meta.data$seurat_clusters==cl)), 10)
+    #cL_resutls = do.call("rbind", lapply(unique(obj@meta.data$seurat_clusters), function(cl){
+    #    es.max.cl = sort(rowSums(es.max[ ,rownames(obj@meta.data[obj@meta.data$seurat_clusters==cl, ])]), decreasing = !0)
+    #    head(data.frame(cluster = cl, type = names(es.max.cl), scores = es.max.cl, ncells = sum(obj@meta.data$seurat_clusters==cl)), 10)
+    #}))
+
+    cL_resutls = do.call("rbind", lapply(unique(obj@meta.data[clusters]), function(cl){
+        if (clusters == 'seurat_clusters'){
+            es.max.cl = sort(rowSums(es.max[ ,rownames(obj@meta.data[obj@meta.data$seurat_clusters==cl, ])]), decreasing = !0)
+            head(data.frame(cluster = cl, type = names(es.max.cl), scores = es.max.cl, ncells = sum(obj@meta.data$seurat_clusters==cl)), 10)
+        } else {
+            # manuall setting, otherwise it has error
+            es.max.cl = sort(rowSums(es.max[ ,rownames(obj@meta.data[obj@meta.data$cluster==cl, ])]), decreasing = !0)
+            head(data.frame(cluster = cl, type = names(es.max.cl), scores = es.max.cl, ncells = sum(obj@meta.data$cluster==cl)), 10)
+        }
+        
+
     }))
     sctype_scores = cL_resutls %>% group_by(cluster) %>% top_n(n = 1, wt = scores)  
 
@@ -174,7 +187,7 @@ ScTypeAnnotation <- function(obj, assay, f_marker_db, tissue, out_path)
     for(j in unique(sctype_scores$cluster)){
         # add cell type
         celltype = as.character(sctype_scores$type[sctype_scores$cluster==j][1])
-        obj@meta.data$cell_type[obj@meta.data$seurat_clusters == j] = celltype
+        obj@meta.data$cell_type[obj@meta.data[clusters] == j] = celltype
         
         # add cell type short name (shortName) -- 'cell_type2'
         shortname = as.character(marker_db$shortName[marker_db$cellName==celltype][1])
@@ -187,8 +200,8 @@ ScTypeAnnotation <- function(obj, assay, f_marker_db, tissue, out_path)
 
     obj@meta.data$cell_type2[is.na(obj@meta.data$cell_type2)] <- 'Unclassified'
     # v3.1
-    obj@meta.data$cluster_plus <- paste0('C', obj@meta.data$seurat_clusters, '.', obj@meta.data$cell_type2)
-    obj@meta.data$sctype.score <- sctype_scores$scores[match(obj@meta.data$seurat_clusters, sctype_scores$cluster)]
+    obj@meta.data$cluster_plus <- paste0('C', obj@meta.data[clusters], '.', obj@meta.data$cell_type2)
+    obj@meta.data$sctype.score <- sctype_scores$scores[match(obj@meta.data[clusters], sctype_scores$cluster)]
     obj@meta.data$sctype.score <- format(round(obj@meta.data$sctype.score, 1), nsmall = 1)
 
     return(obj)
@@ -198,7 +211,7 @@ ScTypeAnnotation <- function(obj, assay, f_marker_db, tissue, out_path)
 
 
 ## Auto detect tissue: Guess tissue type from seurat data
-auto_detect_tissue_type <- function(path_to_db_file, seuratObject, scaled, assay = "RNA", ...){
+auto_detect_tissue_type <- function(path_to_db_file, clusters, seuratObject, scaled, assay = "RNA", ...){
   
   # get all tissue types in DB
     db_read = openxlsx::read.xlsx(path_to_db_file); tissues_ = unique(db_read$tissueType); result_ = c()
@@ -218,8 +231,8 @@ auto_detect_tissue_type <- function(path_to_db_file, seuratObject, scaled, assay
     es.max = sctype_score(scRNAseqData = obj, scaled = scaled, gs = gs_list$gs_positive, gs2 = gs_list$gs_negative, 
                           marker_sensitivity = gs_list$marker_sensitivity, verbose=!0);
   
-    cL_resutls = do.call("rbind", lapply(unique(seuratObject@meta.data$seurat_clusters), function(cl){
-        es.max.cl = sort(rowSums(es.max[ ,rownames(seuratObject@meta.data[seuratObject@meta.data$seurat_clusters==cl, ])]), decreasing = !0)
+    cL_resutls = do.call("rbind", lapply(unique(seuratObject@meta.data[clusters]), function(cl){
+        es.max.cl = sort(rowSums(es.max[ ,rownames(seuratObject@meta.data[seuratObject@meta.data[clusters]==cl, ])]), decreasing = !0)
         head(data.frame(cluster = cl, type = names(es.max.cl), scores = es.max.cl), 10)
     }))
                           
@@ -248,7 +261,7 @@ AutoDetect_Tissue <- function(obj, out_path)
     marker_db <- "https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/ScTypeDB_full.xlsx"
 
     # guess a tissue type
-    tissue_guess = auto_detect_tissue_type(path_to_db_file = marker_db, scRNAseqData = obj[["SCT"]]@scale.data, scaled = TRUE)
+    tissue_guess = auto_detect_tissue_type(path_to_db_file = marker_db, clusters=clusters, scRNAseqData = obj[["SCT"]]@scale.data, scaled = TRUE)
     tissue_guess
 }
 
