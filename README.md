@@ -8,7 +8,7 @@ Cell type annotation tool for single cell data
 
 Developer: Hua Sun
 
-Version: v1.0
+Version: v0.1
 ```
 
 Description
