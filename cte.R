@@ -1,6 +1,6 @@
 # Hua Sun
 # cell type - streamline version
-# v1.0
+# v0.1
 
 
 library(Seurat)
