@@ -79,7 +79,7 @@ Rscript cte4so.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --s
 
 ### Previous version
 ```
-v0.1: These markers match the August 15, 2024 bioRxiv preprint
+v0.1: These marker sets correspond to the bioRxiv preprint published on August 15, 2024.
 https://github.com/hsun9/CellTypeEstimate/tree/0.1
 ```
 
