@@ -71,7 +71,7 @@ Rscript cte4so.R --rds scrna.rds --db hsFB --assay SCT --outdir out_celltype --s
 --plot                                   # Plot UMAP
 --title      ''                          # Title in plot. Default:''
 --reduction  'umap'                      # Reduction in plot. Default:'umap'
---groupby    'cell_type2'                # Group by in plot. Default:'cell_type2'
+--groupby    'cell_type2'                # Group by in plot. Default:'seurat_clusters,cell_type,cell_type2'
 
 --save                                   # save annotated rds or not
 --outdir    out_celltype (default)       # output directory

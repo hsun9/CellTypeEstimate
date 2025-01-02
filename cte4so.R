@@ -22,7 +22,7 @@ assay <- 'SCT'
 
 title <- ''
 reduction <- 'umap'
-groupby <- 'cell_type2'
+groupby <- 'seurat_clusters,cell_type,cell_type2'
 
 outdir <- 'out_celltype'
 
