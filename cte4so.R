@@ -16,10 +16,8 @@ invisible(lapply(r_source, source))
 
 db_path <- paste0(path, '/db')
 
-ver <- 'v3'
 db <- 'hsFB'
 tissue <- 'Brain'
-
 assay <- 'SCT'
 
 title <- ''
@@ -31,7 +29,6 @@ outdir <- 'out_celltype'
 GetoptLong(
     "rds=s",         "rds file path",
     "assay=s",       "obj type",
-    "ver=s",         "marker version",
     "db=s",          "marker db",
     "tissue=s",      "tissue name",
     "save",          "save to rds",
@@ -50,7 +47,7 @@ dir.create(outdir)
 
 
 # set db
-f_db <- paste0(db_path, '/', ver, '/', db, '.xlsx')
+f_db <- paste0(db_path, '/', db, '.xlsx')
 if (!file.exists(f_db)){
     print('[ERROR] The db file does not exists!')
     print(f_db)
