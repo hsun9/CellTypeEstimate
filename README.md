@@ -1,4 +1,4 @@
-
+[Note] Starting from January 3, 2025, the tool will be updated on `https://github.com/combiozone`
 
 
 Cell Type Estimate For Seurat Object (CTE4SO)
