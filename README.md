@@ -1,4 +1,4 @@
-[Note] Starting from 2025-01-03, the tool will be updated on `https://github.com/combiozone`
+[Note] Starting from 2025-01-03, the tool will be updated on `https://github.com/combiozone`. The previous version (v0.1) is only available on `https://github.com/hsun9/CellTypeEstimate/tree/0.1`.
 
 
 Cell Type Estimate For Seurat Object (CTE4SO)
